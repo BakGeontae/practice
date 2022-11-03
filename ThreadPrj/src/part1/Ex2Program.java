@@ -2,13 +2,24 @@ package part1;
 
 import java.util.Iterator;
 
-public class Ex1Program {
-
+public class Ex2Program {
+	// 비동기식 스레드 흐름
 	public static void main(String[] args) {
-		print1();
-		print2();
-		// 동기식 실행으로 print1() for문 전체 실행 후에
-		// print2() 실행
+		Thread th1 = new Thread(new Runnable() {
+			public void run() {
+				print1();
+			}
+
+		});
+
+		Thread th2 = new Thread(new Runnable() {
+			public void run() {
+				print2();
+			}
+
+		});
+		th1.start();
+		th2.start();
 
 	}
 
